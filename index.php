@@ -1,22 +1,26 @@
 <?PHP
 include_once('dbconnect.php');
 
-$sql_bedroom = 'SELECT endpointId,friendlyName,description,device_category,Auth_Token,Switch_Virtual_Key,brightness_support,brightness_virtual_key,color_support,retrievable FROM bedroom_devices';
-$sql_livingroom = 'SELECT endpointId,friendlyName,description,device_category,Auth_Token,Switch_Virtual_Key,brightness_support,brightness_virtual_key,color_support,retrievable FROM livingroom_devices';
-   $retval_bedroom = mysqli_query($conn,$sql_bedroom);
-   $retval_livingroom = mysqli_query($conn,$sql_livingroom);
-
-     
 $payload = array (
-    'endpoints' => 
-    array ()
-    );
+  'endpoints' => 
+  array ()
+  );
 
+$listdbtables = array_column(mysqli_fetch_all($conn->query('SHOW TABLES')),0);
+  $i=0;
+  while($listdbtables[$i] != NULL){
+  $currenttable = $listdbtables[$i];
+  $i++;
+  $sql = "SELECT endpointId,friendlyName,description,device_category,Auth_Token,Switch_Virtual_Key,brightness_support,brightness_virtual_key,color_support,retrievable FROM " .$currenttable; 
+//$sql_bedroom = 'SELECT endpointId,friendlyName,description,device_category,Auth_Token,Switch_Virtual_Key,brightness_support,brightness_virtual_key,color_support,retrievable FROM bedroom_devices';
+//$sql_livingroom = 'SELECT endpointId,friendlyName,description,device_category,Auth_Token,Switch_Virtual_Key,brightness_support,brightness_virtual_key,color_support,retrievable FROM livingroom_devices';
+   //$retval_bedroom = mysqli_query($conn,$sql_bedroom);
+   //$retval_livingroom = mysqli_query($conn,$sql_livingroom);
+   $retval = mysqli_query($conn,$sql);
+     
+while($row = mysqli_fetch_assoc($retval)) {
 
-
-while($row = mysqli_fetch_assoc($retval_bedroom)) {
-
-    if($row['brightness_support'] == "0" && $row['color_support'] == "0"){
+    if($row['brightness_support'] == "No" && $row['color_support'] == "No"){
         $capabilities = array (
         0 => 
         array (
@@ -44,7 +48,7 @@ while($row = mysqli_fetch_assoc($retval_bedroom)) {
     );
 }
 
-    if($row['brightness_support'] == "1" && $row['color_support'] == "0"){
+    if($row['brightness_support'] == "Yes" && $row['color_support'] == "No"){
       $capabilities = array (
         0 => 
         array (
@@ -89,7 +93,7 @@ while($row = mysqli_fetch_assoc($retval_bedroom)) {
     );
 }
 
-    if($row['brightness_support'] == "1" && $row['color_support'] == "1"){
+    if($row['brightness_support'] == "Yes" && $row['color_support'] == "Yes"){
         $capabilities = array (
         0 => 
         array (
@@ -168,7 +172,7 @@ while($row = mysqli_fetch_assoc($retval_bedroom)) {
     );
 }
 
-    if($row['brightness_support'] == "0" && $row['color_support'] == "1"){
+    if($row['brightness_support'] == "No" && $row['color_support'] == "Yes"){
         $capabilities = array (
         0 => 
         array (
@@ -252,10 +256,12 @@ while($row = mysqli_fetch_assoc($retval_bedroom)) {
            ));
 }
 
+};
 
+/*
 while($row = mysqli_fetch_assoc($retval_livingroom)) {
 
-    if($row['brightness_support'] == "0" && $row['color_support'] == "0"){
+    if($row['brightness_support'] == "No" && $row['color_support'] == "No"){
         $capabilities = array (
         0 => 
         array (
@@ -283,7 +289,7 @@ while($row = mysqli_fetch_assoc($retval_livingroom)) {
     );
 }
 
-    if($row['brightness_support'] == "1" && $row['color_support'] == "0"){
+    if($row['brightness_support'] == "Yes" && $row['color_support'] == "No"){
       $capabilities = array (
         0 => 
         array (
@@ -328,7 +334,7 @@ while($row = mysqli_fetch_assoc($retval_livingroom)) {
     );
 }
 
-    if($row['brightness_support'] == "1" && $row['color_support'] == "1"){
+    if($row['brightness_support'] == "Yes" && $row['color_support'] == "Yes"){
         $capabilities = array (
         0 => 
         array (
@@ -407,7 +413,7 @@ while($row = mysqli_fetch_assoc($retval_livingroom)) {
     );
 }
 
-    if($row['brightness_support'] == "0" && $row['color_support'] == "1"){
+    if($row['brightness_support'] == "No" && $row['color_support'] == "Yes"){
         $capabilities = array (
         0 => 
         array (
@@ -491,7 +497,7 @@ while($row = mysqli_fetch_assoc($retval_livingroom)) {
            ));
 }
 
-
+*/
 
 header('Content-Type: application/json');
 echo json_encode($payload);

@@ -1,0 +1,186 @@
+#submit {
+    background-color: green;
+    width: 100%;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=time], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.form {
+    border-radius: 5px;
+    vertical-align: middle;
+    padding-left: 30px;
+    padding-right: 30px;
+    position: relative;
+    top: 50%;
+}
+
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #4BB543; 
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    vertical-align: middle;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+  
+  .warning {
+    padding: 20px;
+    background-color: #ffae42; 
+    color: white;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    vertical-align: middle;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }
+
+
+  body {
+      margin:0;
+    }
+
+  .topnav {
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .topnav a:hover {
+    border-bottom: 3px solid yellowgreen;
+  }
+  
+  .topnav a.active {
+    border-bottom: 3px solid green;
+  }
+
+  
+  #devices {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 98%;
+  }
+  
+  #devices td, #devices th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #devices tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #devices tr:hover {background-color: #ddd;}
+  
+  #devices th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  /* unvisited link */
+a.update {
+    color: green;
+  }
+
+a.delete {
+    color: red;
+  }
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+  }
+
+
+
+
+.yesbox:link{
+    
+    color: white;
+    padding: 14px 25px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+.yesbox:hover {
+    background-color: red;
+  }
+
+.nobox:link{
+    
+    color: white;
+    padding: 14px 25px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+.nobox:hover {
+    background-color: green;
+  } 
+
+a.yesbox:visited {
+    color: white;
+  } 
+  
+a.nobox:visited {
+    color: white;
+  }  
