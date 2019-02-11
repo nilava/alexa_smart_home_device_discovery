@@ -22,7 +22,7 @@ if($_GET['delete']){
     if ($conn->query($sql) === TRUE) {
         //echo "Record deleted successfully";
         $success = "true";
-        header( "refresh:1;url=./index.php" );
+        header( "refresh:2;url=./index.php" );
     }
    else {
         echo "Error: <br>" . $conn->error;
@@ -67,7 +67,7 @@ else{
 }
 
 echo "</center></div>";
-if(!$_GET['delete'] && !$_GET['deleteconf']){
+
 $listdbtables = array_column(mysqli_fetch_all($conn->query('SHOW TABLES')),0);
 $i=0;
 while($listdbtables[$i] != NULL){
@@ -109,7 +109,7 @@ echo "</tr>";
 echo "</table></center></div>";
 
 }
-}
+
 $conn->close();
 ?>
 
