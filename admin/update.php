@@ -5,11 +5,16 @@
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 <body>
-<div class="topnav">
+<div id="loader"></div>
+<div style="display:none;" id="myDiv" class="animate-bottom">
+<div class="topnav" id="myTopnav">
   <a href="./index.php">Home</a>
   <a href="./add.php">Add Device</a>
   <a href="#" class="active">Update Device</a>
-  <a href="#contact">Contact</a>
+  <a href="./rooms.php">Manage Rooms</a>
+  <a class="icon" onclick="topNav()">
+    <i class="fa fa-bars"></i>
+  </a>
 </div>
 <?PHP
 include_once('dbconnect.php');
@@ -120,7 +125,9 @@ echo "
 $conn->close();
 ?>
 
-
+</div>
 </body>
 <link rel="stylesheet" href="CSS/main.css" type="text/css">
+<script src="js/sidenav.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </html>

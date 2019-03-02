@@ -5,14 +5,45 @@
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 <body>
-<div class="topnav">
-    <a onclick="openNav()">☰</a>
+<div id="loader"></div>
+<div style="display:none;" id="myDiv" class="animate-bottom">
+<div class="topnav" id="myTopnav">
   <a href="./index.php" class="active">Home</a>
   <a href="./add.php">Add Device</a>
-  <a href="#contact">Contact</a>
+  <a href="./rooms.php">Manage Rooms</a>
+  <a class="icon" onclick="topNav()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+<div class="row">
+
+  <div class="columnc">
+    <div class="card">
+      <p><i class="fa fa-cogs"></i></p>
+      <h3 id="tdevices">0</h3>
+      <p>Total Devices</p>
+    </div>
+  </div>
+  <div class="columnc">
+    <div class="card">
+      <p><i class="fa fa-toggle-on"></i></p>
+      <h3 id="tswitches">0</h3>
+      <p>Switches</p>
+    </div>
+  </div>
+  <div class="columnc">
+    <div class="card">
+      <p><i class="fa fa-lightbulb-o"></i></p>
+      <h3 id="tlights">0</h3>
+      <p>Lights</p>
+    </div>
+  </div>
+
 </div>
 
-
+<div class="searchbar">
+<input type="text" id="searchbar" onkeyup="search()" placeholder="Search..">
+</div>
 <?PHP
 include_once('dbconnect.php');
 
@@ -49,24 +80,14 @@ if($success == "true"){
 
 $listdbtables = array_column(mysqli_fetch_all($conn->query('SHOW TABLES')),0);
 $j=0;
-
-
-echo "<div id=\"mySidebar\" class=\"sidebar\"><center><font color=\"white\"><h1>Rooms</h1></font>
-  <a class=\"closebtn\" onclick=\"closeNav()\">×</a>";
-  
 while($listdbtables[$j] != NULL){
 $sql = "SELECT * FROM " . $listdbtables[$j];
 $currenttable = $listdbtables[$j];
 $j++;
-if($j == '1'){
-    echo "<a onclick=\"openCity(event, '$currenttable')\" id=\"defaultOpen\">$currenttable</a>";
-}
-else{
-    echo "<a onclick=\"openCity(event, '$currenttable')\">$currenttable</a>";
-}
+//echo "<button class=\"accordion\">Section 1</button>";
 }
 
-echo "</center></div>";
+
 if(!$_GET['delete'] && !$_GET['deleteconf']){
 $listdbtables = array_column(mysqli_fetch_all($conn->query('SHOW TABLES')),0);
 $i=0;
@@ -75,46 +96,37 @@ $sql = "SELECT * FROM " . $listdbtables[$i];
 $currenttable = $listdbtables[$i];
 $i++;
 $result = mysqli_query($conn,$sql);
-echo "<div id=\"$currenttable\" class=\"tabcontent\">";
-echo "<center>";
-echo"<h1>".$currenttable."</h1>";
-echo "<table border='1' id=\"devices\">
-<tr>
-<th>Friendly Name</th>
-<th>Description</th>
-<th>Device Category</th>
-<th>Auth Token</th>
-<th>Switch Virtual Key</th>
-<th>Brightness Virtual Key</th>
-<th>Brightness Support</th>
-<th>Color Support</th>
-<th>Retrievable</th>
-<th>Operations</th>
-</tr>";    
+echo "<button class=\"accordion\">$currenttable</button>";
+echo "<div class=\"panel\">";
 while($row = mysqli_fetch_array($result))
 {
-echo "<tr>";
-echo "<td>" . $row['friendlyName'] . "</td>";
-echo "<td>" . $row['description'] . "</td>";
-echo "<td>" . $row['device_category'] . "</td>";
-echo "<td>" . $row['Auth_Token'] . "</td>";
-echo "<td>" . $row['Switch_Virtual_Key'] . "</td>";
-echo "<td>" . $row['brightness_virtual_key'] . "</td>";
-echo "<td>" . $row['brightness_support'] . "</td>";
-echo "<td>" . $row['color_support'] . "</td>";
-echo "<td>" . $row['retrievable'] . "</td>";
-echo "<td><a class=\"update\" href=\"./update.php?update=".$row['endpointId']."&table=".$currenttable."\">Update</a> / <a class=\"delete\" href=\"./index.php?deleteconf=".$row['endpointId']."&table=".$currenttable."&name=".$row['friendlyName']."\">Delete</a></td>";
-echo "</tr>";
+$totaldevices++;
+if($row['device_category']  == "LIGHT"){$lights++;}elseif($row['device_category'] == "SWITCH"){$switches++;};
+echo "<div class=\"columns\">";    
+echo "<ul class=\"price\">";    
+echo "<li class=\"header\">" . $row['friendlyName'] . "</li>";
+echo "<li class=\"grey\">Description: " . $row['description'] . "</li>";
+echo "<li>Device Category: " . $row['device_category'] . "</li>";
+echo "<li>Switch Virtual Key: " . $row['Switch_Virtual_Key'] . "</li>";
+echo "<li>Brightness Support: " . $row['brightness_support'] . "</li>";
+echo "<li>Color Support: " . $row['color_support'] . "</li>";
+echo "<li>Retreivable: " . $row['retrievable'] . "</li>";
+echo "<li class=\"grey\"><a class=\"update\" href=\"./update.php?update=".$row['endpointId']."&table=".$currenttable."\">Update</a> / <a class=\"delete\" href=\"./index.php?deleteconf=".$row['endpointId']."&table=".$currenttable."&name=".$row['friendlyName']."\">Delete</a></li>";
+echo "</ul></div>";
 }
-echo "</table></center></div>";
-
+echo "</div>";
 }
-}
+echo"<p id=\"divtotaldevices\" style=\"display: none;\">$totaldevices</p>";
+echo"<p id=\"divlights\" style=\"display: none;\">$lights</p>";
+echo"<p id=\"divswitches\" style=\"display: none;\">$switches</p>";
 $conn->close();
+}
+
 ?>
 
-
+</div>
 </body>
 <link rel="stylesheet" href="CSS/main.css" type="text/css">
 <script src="js/sidenav.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </html>
