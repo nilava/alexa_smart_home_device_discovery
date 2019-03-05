@@ -1,7 +1,12 @@
 <?php
  error_reporting( ~E_DEPRECATED & ~E_NOTICE );
  
- define('DBHOST', $DB_HOST);
+$DB_HOST = getenv('DB_HOST');
+$DB_USER = getenv('DB_USER');
+$DB_PASS = getenv('DB_PASS');
+$DB_NAME = getenv('DB_NAME');
+
+ define('DBHOST', '$DB_HOST');
  define('DBUSER', '$DB_USER');
  define('DBPASS', '$DB_PASS');
  define('DBNAME', '$DB_NAME');
