@@ -7,8 +7,17 @@
 <body>
 <div id="loader"></div>
 <div style="display:none;" id="myDiv" class="animate-bottom">
+<div class="topnav" id="myTopnav">
+  <a href="./index.php">Home</a>
+  <a href="./add.php">Add Device</a>
+  <a href="#" class="active">Update Device</a>
+  <a href="./rooms.php">Manage Rooms</a>
+  <a class="icon" onclick="topNav()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
 <?PHP
-include_once('../dbconnect.php');
+include_once('dbconnect.php');
 if($_GET['endpointId']){
     $endpointId = $_GET['endpointId'];
     $name = $_GET['friendlyname'];
@@ -121,12 +130,4 @@ $conn->close();
 <link rel="stylesheet" href="CSS/main.css" type="text/css">
 <script src="js/sidenav.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script>
-window.onload = showPage();
-
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("myDiv").style.display = "block";
-}
-</script>
 </html>

@@ -7,8 +7,16 @@
 <body>
 <div id="loader"></div>
 <div style="display:none;" id="myDiv" class="animate-bottom">
+<div class="topnav" id="myTopnav">
+  <a href="./index.php">Home</a>
+  <a href="./add.php" class="active">Add Device</a>
+  <a href="./rooms.php">Manage Rooms</a>
+  <a class="icon" onclick="topNav()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
 <?PHP
-include_once('../dbconnect.php');
+include_once('dbconnect.php');
 if($_GET['friendlyname']){
 $name = $_GET['friendlyname'];
 $description = $_GET['description'];
@@ -40,7 +48,14 @@ $sql = "INSERT INTO " .$_GET['room']. " (friendlyName, description, device_categ
 echo "
 <div class=\"form\">
 <center><br><br></center>";
-echo "<form method=\"post\">
+if($success == "true"){
+echo "<br><br><div class=\"alert\">
+  <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> 
+  <center>Successfully Added</center>
+</div><br>";
+}
+if($success != "true"){
+echo "<form action=\"./add.php\">
    Friendly Name:<br>
   <input type=\"text\" name=\"friendlyname\" >
   <br>
@@ -92,23 +107,17 @@ echo "<form method=\"post\">
   }
   echo" </select>
   <br><br>
-  <input type=\"submit\" value=\"Submit\" onclick=\"addDevice()\" id=\"submit\">
+  <input type=\"submit\" value=\"Submit\" id=\"submit\">
 </form> 
 </div>
 
 ";
+}
 $conn->close();
 ?>
 </div>
 </body>
-<script>
-window.onload = showPage();
-
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("myDiv").style.display = "block";
-}
-
-
-</script>
+<link rel="stylesheet" href="CSS/main.css" type="text/css">
+<script src="js/sidenav.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </html>

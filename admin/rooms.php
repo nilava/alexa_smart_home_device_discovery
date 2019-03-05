@@ -7,74 +7,109 @@
 <body>
 <div id="loader"></div>
 <div style="display:none;" id="myDiv" class="animate-bottom">
-<div class="topnav" id="myTopnav">
-  <a href="./index.php">Home</a>
-  <a href="./add.php">Add Device</a>
-  <a href="./rooms.php" class="active">Manage Rooms</a>
-  <a class="icon" onclick="topNav()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
 
 <?PHP
-include_once('dbconnect.php');
+include_once('../dbconnect.php');
 
 if($_GET['delete']){
     echo "success";
 }
 
-if($_GET['deleteconf']){
-    echo "<br><br><div class=\"warning\">
-      <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> 
-      <center>Are you sure you want to delete ";
-    echo $_GET['deleteconf']."?";
-    echo "<br><br><br><a class=\"yesbox\" href=\"./index.php?delete=".$_GET['deleteconf']."&table=".$_GET['table']."\">Yes</a><a class=\"nobox\" href=\"./index.php\">No</a></center></div><br>";
-}
 
-
-echo "<div class=\"w3-container\">
-  <h2>Rooms</h2>
-  <ul class=\"w3-ul w3-card-4\">";
+echo "<div>
+  <h2><center>Rooms</center></h2>
+  <ul>";
 $listdbtables = array_column(mysqli_fetch_all($conn->query('SHOW TABLES')),0);
 $j=0;
 while($listdbtables[$j] != NULL){
 $sql = "SELECT * FROM " . $listdbtables[$j];
 $currenttable = $listdbtables[$j];
 $j++;
-echo "<li class=\"w3-display-container\">$currenttable<a href=\"rooms.php?deleteconf=1\" onclick=\"this.parentElement.style.display='none'\" class=\"w3-button w3-transparent w3-display-right\">&times;</a></li>";
+echo "<li value=\"$currenttable\">$currenttable<span class=\"close\">&times;</span></li>";
 }
 
 
-echo "</ul></div>";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+echo "</ul><center><button class=\"button\" id=\"addroom\" onclick=\"addRoom()\">Add Room</button></center></div>";
 
 $conn->close();
 ?>
 </div>
 </body>
-<link rel="stylesheet" href="CSS/main.css" type="text/css">
-<script src="js/sidenav.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script>
+window.onload = showPage();
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+var closebtns = document.getElementsByClassName("close");
+var i;
+
+for (i = 0; i < closebtns.length; i++) {
+  closebtns[i].addEventListener("click", function() {
+    var tablename = this.parentElement.getAttribute("value");
+    if (confirm('Are you sure you want to delete this?')) {
+      this.parentElement.style.display = 'none';
+        $.ajax({
+            url: 'exec/deleteroom.php',
+            type: "POST",
+            data: {
+                name: tablename
+            },
+            success: function (data) {
+              alert(data);
+                // does some stuff here...
+            }
+        });
+    }
+  });
+}
+
+
+function addRoom(){
+  $("#content").load("exec/addroom.php");
+}
+</script>
+
+
+
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+  padding: 10px;
+  margin: 0;
+}
+
+ul li {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+  position: relative;
+}
+
+ul li:hover {
+  background-color: #eee;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  padding: 12px 16px;
+  transform: translate(0%, -50%);
+}
+
+.close:hover {background: #bbb;}
+</style>
 </html>
