@@ -1,10 +1,10 @@
 <?php
  error_reporting( ~E_DEPRECATED & ~E_NOTICE );
  
- define('DBHOST', 'eu-cdbr-west-02.cleardb.net');
- define('DBUSER', 'b6c77e36927837');
- define('DBPASS', '37c17096');
- define('DBNAME', 'heroku_e9d1e71990bb024');
+ define('DBHOST', '$DB_HOST');
+ define('DBUSER', '$DB_USER');
+ define('DBPASS', '$DB_PASS');
+ define('DBNAME', '$DB_NAME');
  
  $conn = mysqli_connect(DBHOST,DBUSER,DBPASS);
  $dbcon = mysqli_select_db($conn,DBNAME);
