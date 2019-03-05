@@ -1,16 +1,11 @@
 <?php
  error_reporting( ~E_DEPRECATED & ~E_NOTICE );
  
-$DB_HOST = getenv('DB_HOST');
-$DB_USER = getenv('DB_USER');
-$DB_PASS = getenv('DB_PASS');
-$DB_NAME = getenv('DB_NAME');
+$DBHOST = getenv("DB_HOST");
+$DBUSER = getenv("DB_USER");
+$DBPASS = getenv("DB_PASS");
+$DBNAME = getenv("DB_NAME");
 
- define('DBHOST', '$DB_HOST');
- define('DBUSER', '$DB_USER');
- define('DBPASS', '$DB_PASS');
- define('DBNAME', '$DB_NAME');
- 
  $conn = mysqli_connect(DBHOST,DBUSER,DBPASS);
  $dbcon = mysqli_select_db($conn,DBNAME);
  echo DBHOST;
