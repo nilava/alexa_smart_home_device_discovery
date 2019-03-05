@@ -8,8 +8,6 @@ $DBNAME = getenv("DB_NAME");
 
  $conn = mysqli_connect($DBHOST,$DBUSER,$DBPASS);
  $dbcon = mysqli_select_db($conn,$DBNAME);
- echo $DBHOST;
-echo $DBUSER;
  if ( !$conn ) {
   die("Connection failed : " . mysqli_error());
  }
