@@ -114,6 +114,7 @@ function addDevice(){
                room: room
             },
             success: function (data) {
+                alert(data);
                $("#content").load("admin.php");
             }
         });
