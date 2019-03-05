@@ -9,30 +9,7 @@
 <div style="display:none;" id="myDiv" class="animate-bottom">
 <?PHP
 include_once('../dbconnect.php');
-if($_GET['friendlyname']){
-$name = $_GET['friendlyname'];
-$description = $_GET['description'];
-$category = $_GET['category'];
-$token = $_GET['authtoken'];   
-$switchkey = $_GET['skey'];
-$bkey = $_GET['bkey'];
-$bsupport = $_GET['bsupport'];
-$csupport = $_GET['csupport'];
-$ret = $_GET['retrievable'];
 
-$sql = "INSERT INTO " .$_GET['room']. " (friendlyName, description, device_category, Auth_Token, Switch_Virtual_Key, brightness_virtual_key, brightness_support, color_support, retrievable)
- VALUES ('$name', '$description', '$category', '$token', '$switchkey', '$bkey', '$bsupport', '$csupport', '$ret');";
-
- if ($conn->multi_query($sql) === TRUE) {
-    //echo "New records created successfully";
-    $success = "true";
-    header( "refresh:1;url=./index.php" );
-} else {
-    echo "Error: <br>" . $conn->error;
-   // header( "refresh:1;url=./add.php" );
-}
-// echo $sql;
-}
 
 
 
@@ -40,7 +17,7 @@ $sql = "INSERT INTO " .$_GET['room']. " (friendlyName, description, device_categ
 echo "
 <div class=\"form\">
 <center><br><br></center>";
-echo "<form method=\"post\">
+echo "<form action=\"javascript:void(0);\" method=\"post\">
    Friendly Name:<br>
   <input type=\"text\" name=\"friendlyname\" >
   <br>
@@ -107,6 +84,39 @@ window.onload = showPage();
 function showPage() {
   document.getElementById("loader").style.display = "none";
   document.getElementById("myDiv").style.display = "block";
+}
+
+function addDevice(){
+   var name = document.getElementsByName("friendlyname")[0].value;
+   var description = document.getElementsByName("description")[0].value;
+   var category = document.getElementsByName("category")[0].value;
+   var authtoken = document.getElementsByName("authtoken")[0].value;
+   var skey = document.getElementsByName("skey")[0].value;
+   var bkey = document.getElementsByName("bkey")[0].value;
+   var bsupport = document.getElementsByName("bsupport")[0].value;
+   var csupport = document.getElementsByName("csupport")[0].value;
+   var retrievable = document.getElementsByName("retrievable")[0].value;
+   var room = document.getElementsByName("room")[0].value;
+   
+   $.ajax({
+            url: 'exec/adddevice.php',
+            type: "POST",
+            data: {
+               friendlyname: name,
+               description: description,
+               category: category,
+               authtoken: authtoken,
+               skey: skey,
+               bkey: bkey,
+               bsupport: bsupport,
+               csupport: csupport,
+               retrievable: retrievable,
+               room: room
+            },
+            success: function (data) {
+               $("#content").load("admin.php");
+            }
+        });
 }
 
 
