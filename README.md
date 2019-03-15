@@ -1,17 +1,14 @@
 <img src="https://github.com/nilava/alexa_smart_home_device_discovery/raw/master/res/ss.png" alt="screenshot"/>
 
-**Cloud torrent** is a a self-hosted remote torrent client, written in Go (golang). You start torrents remotely, which are downloaded as sets of files on the local disk of the server, which are then retrievable or streamable via HTTP.
+**Alexa Blynk WebUI** is a a self-hosted remote php webserver that acts as an Alexa Lambda Endpoint to return Alexa Devices.
 
 ### Features
 
-* Single binary
-* Cross platform
-* Embedded torrent search
-* Real-time updates
+* Multiple Devices
+* Multiple Room Support
+* Alexa Brightness Support
+* Alexa Colour Support
 * Mobile-friendly
-* Fast [content server](http://golang.org/pkg/net/http/#ServeContent)
-
-See [Future Features here](#future-features)
 
 ### Install
 
@@ -31,12 +28,12 @@ See [the latest release](https://github.com/nilava/alexa_smart_home_device_disco
 
 **Digital Ocean**
 
-* [Sign up with free $10 credit](https://m.do.co/c/011fa87fde07)
+* [Sign up with free $10 credit](https://m.do.co/c/a11d68dabea7)
   
 
 **Vultr**
 
-* [Sign up with free $10 credit here](http://www.vultr.com/?ref=6947403-3B)
+* [Sign up with free $10 credit here](https://www.vultr.com/?ref=7410642)
 
 
 [**AWS**](https://aws.amazon.com)
