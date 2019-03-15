@@ -105,7 +105,7 @@ echo "<li>Switch Virtual Key: " . $row['Switch_Virtual_Key'] . "</li>";
 echo "<li>Brightness Support: " . $row['brightness_support'] . "</li>";
 echo "<li>Color Support: " . $row['color_support'] . "</li>";
 echo "<li>Retreivable: " . $row['retrievable'] . "</li>";
-echo "<li class=\"grey\"><a class=\"update\" href=\"#\" onclick=\"update($id,'$currenttable')\">Update</a> / <a class=\"delete\" href=\"./index.php?deleteconf=".$row['endpointId']."&table=".$currenttable."&name=".$row['friendlyName']."\">Delete</a></li>";
+echo "<li class=\"grey\"><a class=\"update\" href=\"#\" onclick=\"update($id,'$currenttable')\">Update</a> / <a class=\"delete\" href=\"#\" onclick=\"deleteDevice($id, '$currenttable')\">Delete</a></li>";
 echo "</ul></div>";
 }
 echo "</div>";
@@ -178,5 +178,27 @@ function search() {
 function update(id,tablename){
   $("#content").load("update.php?update="+ id + "&table=" + tablename);
 }
+
+
+function deleteDevice(id,tablename){
+  if (confirm('Are you sure you want to delete this?')) {
+  $.ajax({
+            url: 'exec/deletedevice.php',
+            type: "POST",
+            data: {
+               endpointId: id,
+               room: tablename
+            },
+            success: function (data) {
+               alert(data);
+               $("#content").load("admin.php");
+            }
+        });
+}
+}
+
+
+
+
 </script>
 </html>

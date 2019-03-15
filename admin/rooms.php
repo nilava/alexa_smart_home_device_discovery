@@ -11,11 +11,6 @@
 <?PHP
 include_once('../dbconnect.php');
 
-if($_GET['delete']){
-    echo "success";
-}
-
-
 echo "<div>
   <h2><center>Rooms</center></h2>
   <ul>";

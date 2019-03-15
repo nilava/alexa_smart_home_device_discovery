@@ -9,37 +9,6 @@
 <div style="display:none;" id="myDiv" class="animate-bottom">
 <?PHP
 include_once('../dbconnect.php');
-if($_GET['endpointId']){
-    $endpointId = $_GET['endpointId'];
-    $name = $_GET['friendlyname'];
-    $description = $_GET['description'];
-    $category = $_GET['category'];
-    $token = $_GET['authtoken'];   
-    $switchkey = $_GET['skey'];
-    $bkey = $_GET['bkey'];
-    $bsupport = $_GET['bsupport'];
-    $csupport = $_GET['csupport'];
-    $ret = $_GET['retrievable'];
- $sql = "UPDATE " .$_GET['room']. " SET friendlyName='$name', description='$description', device_category='$category', Auth_Token='$token', Switch_Virtual_Key='$switchkey', brightness_virtual_key='$bkey',
- brightness_support='$bsupport', color_support='$csupport',retrievable='$ret' WHERE endpointId=".$endpointId;
- // Prepare statement
- $stmt = $conn->prepare($sql);
-
- // execute the query
- $stmt->execute();
- $success = "true";
- header( "refresh:1;url=./index.php" );
-}
-
-if($success == "true"){
-    echo "<br><br><div class=\"alert\">
-      <span class=\"closebtn\" onclick=\"this.parentElement.style.display='none';\">&times;</span> 
-      <center>Successfully Updated</center>
-    </div><br>";
-    }
-
-
-
 
 if($_GET['update']){
 $endpointId = $_GET['update'];    
@@ -60,7 +29,7 @@ $room = $_GET['table'];
 echo "
 <div class=\"form\">
 <center><br><br></center>
-<form action=\"./update.php\">
+<form action=\"javascript:void(0);\" method=\"post\">
 <input type=\"hidden\" name=\"endpointId\" value=\"$endpointId\">
    Friendly Name:<br>
   <input type=\"text\" name=\"friendlyname\" value=\"$name\">
@@ -107,7 +76,7 @@ echo "
   Room:<br>
   <input type=\"text\" name=\"room\" value=\"$room\" readonly>
   <br><br>
-  <input type=\"submit\" value=\"Submit\" id=\"submit\">
+  <input type=\"submit\" value=\"Submit\" id=\"submit\" onclick=\"updateDevice()\">
 </form> 
 </div>
 
@@ -127,6 +96,43 @@ window.onload = showPage();
 function showPage() {
   document.getElementById("loader").style.display = "none";
   document.getElementById("myDiv").style.display = "block";
+}
+
+
+function updateDevice(){
+   var endpointId = document.getElementsByName("endpointId")[0].value 
+   var name = document.getElementsByName("friendlyname")[0].value;
+   var description = document.getElementsByName("description")[0].value;
+   var category = document.getElementsByName("category")[0].value;
+   var authtoken = document.getElementsByName("authtoken")[0].value;
+   var skey = document.getElementsByName("skey")[0].value;
+   var bkey = document.getElementsByName("bkey")[0].value;
+   var bsupport = document.getElementsByName("bsupport")[0].value;
+   var csupport = document.getElementsByName("csupport")[0].value;
+   var retrievable = document.getElementsByName("retrievable")[0].value;
+   var room = document.getElementsByName("room")[0].value;
+   
+   $.ajax({
+            url: 'exec/updatedevice.php',
+            type: "POST",
+            data: {
+               endpointId: endpointId,
+               friendlyname: name,
+               description: description,
+               category: category,
+               authtoken: authtoken,
+               skey: skey,
+               bkey: bkey,
+               bsupport: bsupport,
+               csupport: csupport,
+               retrievable: retrievable,
+               room: room
+            },
+            success: function (data) {
+               alert(data);
+               $("#content").load("admin.php");
+            }
+        });
 }
 </script>
 </html>
