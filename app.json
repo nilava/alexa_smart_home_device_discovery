@@ -12,22 +12,22 @@
     "DB_HOST": {
       "description": "Database Host URL",
       "value": "eu-cdbr-west-02.cleardb.net",
-      "required": "false"
+      "required": false
     },
     "DB_USER": {
       "description": "Database Username",
       "value": "",
-      "required": "false"
+      "required": false
     },
     "DB_PASS": {
       "description": "Database Password",
       "value": "",
-      "required": "false"
+      "required": false
     },
     "DB_NAME": {
       "description": "The Database Name",
       "value": "",
-      "required": "false"
+      "required": false
     }
   },
   "addons": [
