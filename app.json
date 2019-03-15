@@ -1,0 +1,40 @@
+{
+  "name": "Blynk Alexa WebUI",
+  "description": "WebUI for Alexa Devices for Blynk",
+  "keywords": [
+    "Alexa",
+    "Blynk",
+    "SmartHome"
+  ],
+  "repository": "https://github.com/nilava/alexa_smart_home_device_discovery",
+  "success_url": "/admin",
+  "env": {
+    "DB_HOST": {
+      "description": "Database Host URL",
+      "value": "eu-cdbr-west-02.cleardb.net"
+    },
+    "DB_USER": {
+      "description": "Database Username",
+      "value": ""
+    },
+    "DB_PASS": {
+      "description": "Database Password",
+      "value": ""
+    },
+    "DB_NAME": {
+      "description": "The Database Name",
+      "value": ""
+    }
+  },
+  "addons": [
+    "openredis",
+    {
+      "plan": "cleardb:ignite"
+    }
+  ],
+   "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-php"
+    }
+  ]
+}
