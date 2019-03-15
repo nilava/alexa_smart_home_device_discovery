@@ -17,33 +17,11 @@ See [Future Features here](#future-features)
 
 **Binaries**
 
-[![Releases](https://img.shields.io/github/release/jpillora/cloud-torrent.svg)](https://github.com/jpillora/cloud-torrent/releases) [![Releases](https://img.shields.io/github/downloads/jpillora/cloud-torrent/total.svg)](https://github.com/jpillora/cloud-torrent/releases)
+https://img.shields.io/github/downloads/nilava/alexa_smart_home_device_discovery/total.svg
 
-See [the latest release](https://github.com/jpillora/cloud-torrent/releases/latest) or download and install it now with
+See [the latest release](https://github.com/jpillora/cloud-torrent/releases/latest).
 
-```
-curl https://i.jpillora.com/cloud-torrent! | bash
-```
 
-*Tip*: [Auto-run `cloud-torrent` on boot](https://github.com/jpillora/cloud-torrent/wiki/Auto-Run-on-Reboot)
-
-**Docker**
-
-[![Docker Pulls](https://img.shields.io/docker/pulls/jpillora/cloud-torrent.svg)][dockerhub] [![Image Size](https://images.microbadger.com/badges/image/jpillora/cloud-torrent.svg)][dockerhub]
-
-[dockerhub]: https://hub.docker.com/r/jpillora/cloud-torrent/
-
-``` sh
-$ docker run -d -p 3000:3000 -v /path/to/my/downloads:/downloads jpillora/cloud-torrent
-```
-
-**Source**
-
-*[Go](https://golang.org/dl/) is required to install from source*
-
-``` sh
-$ go get -v github.com/jpillora/cloud-torrent
-```
 
 **VPS**
 
