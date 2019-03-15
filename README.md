@@ -1,6 +1,11 @@
 <img src="https://github.com/nilava/alexa_smart_home_device_discovery/raw/master/res/ss.png" alt="screenshot"/>
 
-**Alexa Blynk WebUI** is a a self-hosted remote php webserver that acts as an Alexa Lambda Endpoint to return Alexa Devices.
+**Blynk Alexa WebUI** is a a self-hosted remote php webserver that acts as an Alexa Lambda Endpoint to return Alexa Devices.
+
+
+**Blynk Alexa Lambda** 
+
+[Get Blynk Alexa Lambda Here](https://github.com/nilava/alexa_smart_home_lambda)
 
 ### Features
 
