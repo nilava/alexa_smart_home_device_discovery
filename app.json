@@ -16,17 +16,14 @@
     },
     "DB_USER": {
       "description": "Database Username",
-      "value": "",
       "required": false
     },
     "DB_PASS": {
       "description": "Database Password",
-      "value": "",
       "required": false
     },
     "DB_NAME": {
       "description": "The Database Name",
-      "value": "",
       "required": false
     }
   },
