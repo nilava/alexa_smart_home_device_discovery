@@ -11,23 +11,26 @@
   "env": {
     "DB_HOST": {
       "description": "Database Host URL",
-      "value": "eu-cdbr-west-02.cleardb.net"
+      "value": "eu-cdbr-west-02.cleardb.net",
+      "required": "false"
     },
     "DB_USER": {
       "description": "Database Username",
-      "value": ""
+      "value": "",
+      "required": "false"
     },
     "DB_PASS": {
       "description": "Database Password",
-      "value": ""
+      "value": "",
+      "required": "false"
     },
     "DB_NAME": {
       "description": "The Database Name",
-      "value": ""
+      "value": "",
+      "required": "false"
     }
   },
   "addons": [
-    "openredis",
     {
       "plan": "cleardb:ignite"
     }
