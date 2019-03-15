@@ -2,7 +2,7 @@
   "name": "Blynk Alexa WebUI",
   "description": "WebUI for Alexa Devices for Blynk",
   "website": "https://nilava.github.io",
-  "logo": "https://github.com/nilava/alexa_smart_home_device_discovery/blob/master/res/icon.png",
+  "logo": "https://raw.githubusercontent.com/nilava/alexa_smart_home_device_discovery/master/res/icon.png",
   "keywords": [
     "Alexa",
     "Blynk",
