@@ -59,7 +59,7 @@ See [the latest release](https://github.com/nilava/alexa_smart_home_device_disco
 
 * **Nilava Chowdhury** - *Initial work* - [nilava](https://github.com/nilava)
 
-See also the list of [contributors](https://github.com/alexa_smart_home_lambda/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/nilava/alexa_smart_home_device_discovery/contributors) who participated in this project.
 
 ## License
 
