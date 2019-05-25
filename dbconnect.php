@@ -2,10 +2,11 @@
  error_reporting( ~E_DEPRECATED & ~E_NOTICE );
  
 $DBHOST = getenv("DB_HOST");
+$DBPORT = getenv("DB_PORT");
 $DBUSER = getenv("DB_USER");
 $DBPASS = getenv("DB_PASS");
 $DBNAME = getenv("DB_NAME");
- $conn = mysqli_connect($DBHOST,$DBUSER,$DBPASS);
+ $conn = mysqli_connect($DBHOST,$DBUSER,$DBPASS,$DBPORT);
  $dbcon = mysqli_select_db($conn,$DBNAME);
  if ( !$conn ) {
   die("Connection failed : " . mysqli_error());
