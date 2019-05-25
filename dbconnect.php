@@ -5,7 +5,7 @@ $DBHOST = getenv("DB_HOST");
 $DBUSER = getenv("DB_USER");
 $DBPASS = getenv("DB_PASS");
 $DBNAME = getenv("DB_NAME");
- $conn = mysqli_connect($DBHOST,$DBUSER,$DBPASS,MYSQL_CLIENT_SSL);
+ $conn = mysqli_connect($DBHOST,$DBUSER,$DBPASS,false,MYSQL_CLIENT_SSL);
  $dbcon = mysqli_select_db($conn,$DBNAME);
  if ( !$conn ) {
   die("Connection failed : " . mysqli_error());
