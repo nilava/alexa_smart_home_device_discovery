@@ -9,7 +9,7 @@ $DBPORT = getenv("DB_PORT");
 
 $conn = mysqli_init();
 $conn->ssl_set('client.pem', 'client.pem', 'caa.pem', NULL, NULL);
-$ctx = $conn->real_connect($DBHOST,$DBUSER,$DBPASS,$DBPORT,null,MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);
+$ctx = $conn->real_connect($DBHOST,$DBUSER,$DBPASS,$DBNAME,$DBPORT,null,MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);
  if ( !$ctx ) {
   die("Connection failed : " . mysqli_error());
  }
