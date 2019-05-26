@@ -5,13 +5,12 @@ $DBHOST = getenv("DB_HOST");
 $DBUSER = getenv("DB_USER");
 $DBPASS = getenv("DB_PASS");
 $DBNAME = getenv("DB_NAME");
- $conn = mysqli_connect($DBHOST,$DBUSER,$DBPASS,false,MYSQL_CLIENT_SSL);
- $dbcon = mysqli_select_db($conn,$DBNAME);
- if ( !$conn ) {
+$DBPORT = getenv("DB_PORT");
+
+$conn = mysqli_init();
+$conn->ssl_set('client.pem', 'client.pem', 'caa.pem', NULL, NULL);
+$ctx = $conn->real_connect($DBHOST,$DBUSER,$DBPASS,$DBPORT,null,MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);
+ if ( !$ctx ) {
   die("Connection failed : " . mysqli_error());
- }
- 
- if ( !$dbcon ) {
-  die("Database Connection failed : " . mysqli_error());
  }
 ?>
