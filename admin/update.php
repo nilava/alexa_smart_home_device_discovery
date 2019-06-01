@@ -38,9 +38,10 @@ echo "
   <input type=\"text\" name=\"description\" value=\"$description\">
   <br>
   Device Category:<br>
-  <select name=\"category\" value=\"$category\">
+  <select name=\"category\" >
   <option value=\"LIGHT\">Light</option>
   <option value=\"SWITCH\">Switch</option>
+  <option value=\"$category\" selected hidden>$category</option>
   </select>
   <br>
   Auth Token:<br>
@@ -96,8 +97,29 @@ window.onload = showPage();
 function showPage() {
   document.getElementById("loader").style.display = "none";
   document.getElementById("myDiv").style.display = "block";
+  var t=setInterval(devctg,1000);
 }
 
+function devctg(){
+  var ctg = document.getElementsByName("category")[0].value;
+  var bkey = document.getElementsByName("bkey")[0];
+  var bsupport = document.getElementsByName("bsupport")[0];
+  var csupport = document.getElementsByName("csupport")[0];
+  if(ctg === 'SWITCH'){
+  bsupport.value= 'No';
+  csupport.value= 'No';
+  bkey.value= '';
+  bkey.style.display = "none";
+  bsupport.style.display = "none";
+  csupport.style.display = "none";
+  console.log(bsupport.value)
+  }
+  else if(ctg === 'LIGHT'){
+  bkey.style.display = "block";
+  bsupport.style.display = "block";
+  csupport.style.display = "block";
+  }
+}
 
 function updateDevice(){
    var endpointId = document.getElementsByName("endpointId")[0].value 
