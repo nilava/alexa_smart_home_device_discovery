@@ -8,12 +8,7 @@
 <div id="loader"></div>
 <div style="display:none;" id="myDiv" class="animate-bottom">
 <?PHP
-session_start();
-$PASS = getenv("PHP_PASS");
-if($_SESSION["pass"] == $PASS){
-   include_once('../dbconnect.php');
-} 
-
+include_once('../dbconnect.php');
 
 if($_GET['update']){
 $endpointId = $_GET['update'];    
