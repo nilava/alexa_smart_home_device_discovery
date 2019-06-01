@@ -1,6 +1,12 @@
 <?PHP
+$id = intval($_GET['pass']);
+$PASS = getenv("PHP_PASS");
+if($id == $PASS){
 include_once('dbconnect.php');
-
+}
+else{
+  exit();
+}
 $payload = array (
   'endpoints' => 
   array ()

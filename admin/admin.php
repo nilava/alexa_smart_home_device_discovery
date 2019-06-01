@@ -38,7 +38,11 @@
 <input type="text" id="searchbar" onkeyup="search()" placeholder="Search..">
 </div>
 <?PHP
+session_start(); 
+$PASS = getenv("PHP_PASS");
+if($_SESSION["pass"] == $PASS){
 include_once('../dbconnect.php');
+}
 
 if($_GET['delete']){
     $sql = "DELETE FROM " .$_GET['table']. " WHERE endpointId=".$_GET['delete'];

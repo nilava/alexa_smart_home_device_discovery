@@ -1,3 +1,8 @@
+<?php
+session_start(); 
+$id = intval($_GET['pass']);
+$_SESSION["pass"] = $id;
+?>
 <!DOCTYPE html>
 <html>
     <head>

@@ -9,7 +9,11 @@
 <div style="display:none;" id="myDiv" class="animate-bottom">
 
 <?PHP
-include_once('../dbconnect.php');
+session_start();
+$PASS = getenv("PHP_PASS");
+if($_SESSION["pass"] == $PASS){
+  include_once('../dbconnect.php');
+} 
 
 echo "<div>
   <h2><center>Rooms</center></h2>
