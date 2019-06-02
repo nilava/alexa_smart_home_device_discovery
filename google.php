@@ -56,7 +56,7 @@ while($row = mysqli_fetch_assoc($retval)) {
 
     array_push($payload["devices"], 
          array (
-          'id' => '123',
+          'id' => $row['endpointId'],
           'type' => $type,
           'traits' => $traits,
           'name' => 
