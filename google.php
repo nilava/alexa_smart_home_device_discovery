@@ -71,7 +71,7 @@ while($row = mysqli_fetch_assoc($retval)) {
               0 => $row['friendlyName'],
             ),
           ),
-          'willReportState' => false,
+          'willReportState' => $row['retrievable'],
           'roomHint' => $currenttable,
           'deviceInfo' => 
           array (
