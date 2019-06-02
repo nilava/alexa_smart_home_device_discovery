@@ -2,6 +2,7 @@
 include_once('dbconnect.php');
 
 $payload = array (
+  "agentUserId" => "1836.15267389",
   'devices' => 
   array ()
   );
