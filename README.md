@@ -1,4 +1,3 @@
-
 # Blynk Alexa WebUI
 
 **Blynk Alexa WebUI** is a a self-hosted remote php webserver that acts as an Alexa Lambda Endpoint to return Alexa Devices.
@@ -37,6 +36,7 @@ See [the latest release](https://github.com/nilava/alexa_smart_home_device_disco
 **Heroku** (One Click Deploy to Heroku)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fnilava%2Fsmart_home_device_discovery.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fnilava%2Fsmart_home_device_discovery?ref=badge_shield)
 
 
 
@@ -65,6 +65,9 @@ See also the list of [contributors](https://github.com/nilava/alexa_smart_home_d
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fnilava%2Fsmart_home_device_discovery.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fnilava%2Fsmart_home_device_discovery?ref=badge_large)
 
 #### Donate
 
